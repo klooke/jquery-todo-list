@@ -38,6 +38,13 @@ function newTaskItem(description) {
 	const taskInput = $(
 		`<input type="text" class="task-change-input" value="${description}" readonly />`
 	);
+
+	taskInput.on("click", () => {
+		if (taskInput.attr("readonly")) {
+			taskInput.toggleClass("task-completed");
+		}
+	});
+
 	taskItem.append(taskInput);
 	return taskItem;
 }
