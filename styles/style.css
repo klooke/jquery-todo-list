@@ -4,3 +4,66 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+
+body {
+  max-width: 768px;
+  margin: auto;
+}
+
+header {
+  padding: 2.5em;
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+input,
+button {
+  padding: 0.25rem;
+  cursor: pointer;
+}
+
+.task-change-input {
+  width: 85%;
+  color: black;
+  background-color: transparent;
+  font-size: medium;
+  border: none;
+}
+
+.task-item {
+  max-width: 85%;
+  position: relative;
+  margin: 0.5rem 0;
+}
+
+.task-control {
+  display: flex;
+  justify-content: space-evenly;
+  width: 5rem;
+  position: absolute;
+  right: -0.5rem;
+  top: 0;
+  list-style: none;
+}
+
+.task-completed {
+  text-decoration: line-through;
+}
+
+#to-do-list {
+  max-height: 80vh;
+  margin-bottom: 0.5rem;
+  overflow-y: auto;
+  list-style-position: inside;
+}
+
+#task-description {
+  width: 75%;
+  cursor: auto;
+}
+
+#form-item {
+  display: none;
+  list-style: none;
+}
