@@ -42,6 +42,10 @@ function newTaskItem(description) {
 	const taskEditBtn = $("<li><button>Edit</button></li>");
 	const taskDelBtn = $("<li><button>Del</button></li>");
 
+	taskControl.hide();
+
+	taskItem.on("mouseleave", () => taskControl.hide());
+	taskItem.on("mouseenter", () => taskControl.show());
 	taskInput.on("focus", () => {
 		if (taskInput.attr("readonly")) taskInput.trigger("blur");
 	});
