@@ -13,6 +13,27 @@
     <title>Lista de tarefas</title>
   </head>
   <body>
+    <header>
+      <h1>Lista de tarefas</h1>
+    </header>
+    <main>
+      <ul id="to-do-list">
+        <li id="form-item" tabindex="-1">
+          <form>
+            <input
+              type="text"
+              name="task-description"
+              id="task-description"
+              placeholder="Descrição da tarefa..."
+              maxlength="48"
+              required />
+            <input type="submit" value="Adicionar" />
+            <input type="reset" value="Cancelar" />
+          </form>
+        </li>
+      </ul>
+      <button id="show-task-form">Nova tarefa</button>
+    </main>
     <script
       src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"
       defer></script>
