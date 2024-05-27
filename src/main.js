@@ -38,6 +38,8 @@ function newTaskItem(description) {
 	const taskInput = $(
 		`<input type="text" class="task-change-input" value="${description}" readonly />`
 	);
+	const taskControl = $(`<ul class="task-control"></ul>`);
+	const taskDelBtn = $("<li><button>Del</button></li>");
 
 	taskInput.on("click", () => {
 		if (taskInput.attr("readonly")) {
@@ -45,6 +47,8 @@ function newTaskItem(description) {
 		}
 	});
 
-	taskItem.append(taskInput);
+	taskDelBtn.on("click", () => taskItem.detach());
+	taskControl.append(taskDelBtn);
+	taskItem.append(taskInput, taskControl);
 	return taskItem;
 }
