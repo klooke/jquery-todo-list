@@ -39,16 +39,40 @@ function newTaskItem(description) {
 		`<input type="text" class="task-change-input" value="${description}" readonly />`
 	);
 	const taskControl = $(`<ul class="task-control"></ul>`);
+	const taskEditBtn = $("<li><button>Edit</button></li>");
 	const taskDelBtn = $("<li><button>Del</button></li>");
 
+	taskInput.on("focus", () => {
+		if (taskInput.attr("readonly")) taskInput.trigger("blur");
+	});
+	taskInput.on("focusout", () => {
+		if (taskInput.val().length > 0) taskInput.attr("readonly", true);
+		else taskDelBtn.trigger("click");
+	});
+	taskInput.on("keypress", (event) => {
+		if (event.key === "Enter") {
+			event.preventDefault();
+			taskInput.trigger("blur");
+			taskInput.trigger("focusout");
+		}
+	});
 	taskInput.on("click", () => {
 		if (taskInput.attr("readonly")) {
 			taskInput.toggleClass("task-completed");
+			taskEditBtn.children().attr("disabled", (_, attr) => !attr);
+		}
+	});
+
+	taskEditBtn.on("click", () => {
+		if (!taskInput.hasClass("task-completed")) {
+			taskInput.attr("readonly", false);
+			taskInput.trigger("focus");
 		}
 	});
 
 	taskDelBtn.on("click", () => taskItem.detach());
-	taskControl.append(taskDelBtn);
+
+	taskControl.append(taskEditBtn, taskDelBtn);
 	taskItem.append(taskInput, taskControl);
 	return taskItem;
 }
